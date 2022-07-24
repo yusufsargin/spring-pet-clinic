@@ -1,5 +1,7 @@
 package guru.springframework.sfgpetclinic.model;
 
+import guru.springframework.sfgpetclinic.common.model.BaseEntity;
+
 /**
  * Created by jt on 7/29/18.
  */

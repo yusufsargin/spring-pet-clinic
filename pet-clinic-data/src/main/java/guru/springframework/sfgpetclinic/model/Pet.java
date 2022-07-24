@@ -1,11 +1,13 @@
 package guru.springframework.sfgpetclinic.model;
 
+import guru.springframework.sfgpetclinic.common.model.BaseEntity;
+
 import java.time.LocalDate;
 
 /**
  * Created by jt on 7/13/18.
  */
-public class Pet extends BaseEntity{
+public class Pet extends BaseEntity {
 
     private String name;
     private PetType petType;

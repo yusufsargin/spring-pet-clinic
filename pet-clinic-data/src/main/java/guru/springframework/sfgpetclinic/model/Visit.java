@@ -1,5 +1,7 @@
 package guru.springframework.sfgpetclinic.model;
 
+import guru.springframework.sfgpetclinic.common.model.BaseEntity;
+
 import java.time.LocalDate;
 
 /**
