@@ -5,20 +5,19 @@ import guru.springframework.sfgpetclinic.repositories.OwnerRepository;
 import guru.springframework.sfgpetclinic.repositories.PetRepository;
 import guru.springframework.sfgpetclinic.repositories.PetTypeRepository;
 import guru.springframework.sfgpetclinic.services.OwnerService;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
+@Service
+@Profile("springdatajpa")
 public class OwnerSDJpaService implements OwnerService {
     private final OwnerRepository ownerRepository;
-    private final PetRepository petRepository;
-    private final PetTypeRepository petTypeRepository;
 
     public OwnerSDJpaService(OwnerRepository ownerRepository, PetRepository petRepository, PetTypeRepository petTypeRepository) {
         this.ownerRepository = ownerRepository;
-        this.petRepository = petRepository;
-        this.petTypeRepository = petTypeRepository;
     }
 
     @Override
@@ -37,6 +36,7 @@ public class OwnerSDJpaService implements OwnerService {
 
     @Override
     public Owner save(Owner object) {
+        System.out.println("Owner service called");
         return ownerRepository.save(object);
     }
 
@@ -52,15 +52,6 @@ public class OwnerSDJpaService implements OwnerService {
 
     @Override
     public Owner findByLastName(String lastName) {
-        Owner owner = null;
-
-        for (Owner item :
-                ownerRepository.findAll()) {
-            if (Objects.equals(item.getLastName(), lastName)) {
-                owner = item;
-            }
-        }
-
-        return owner;
+        return ownerRepository.findByLastName(lastName);
     }
 }
