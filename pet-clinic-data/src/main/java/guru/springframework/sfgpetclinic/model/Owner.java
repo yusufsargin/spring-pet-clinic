@@ -14,7 +14,6 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "owners")
@@ -28,8 +27,16 @@ public class Owner extends Person {
     private String telephone;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
-    @ToString.Exclude
     private Set<Pet> pets = new HashSet<>();
+
+    @Builder
+    public Owner(Long id, String firstName, String lastName, String address, String city, String telephone, Set<Pet> pets) {
+        super(id, firstName, lastName);
+        this.address = address;
+        this.city = city;
+        this.telephone = telephone;
+        this.pets = pets;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -43,5 +50,16 @@ public class Owner extends Person {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Owner{" +
+                "firstname='" + this.getFirstName() + '\'' +
+                "lastname='" + this.getLastName() + '\'' +
+                "address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", telephone='" + telephone + '\'' +
+                '}';
     }
 }
