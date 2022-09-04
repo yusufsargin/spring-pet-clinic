@@ -13,6 +13,3 @@ jobs:
           cache: 'maven'
       - name: Run Verify
         run: ./mvnw verify
-
-      - name: Run  tests
-        run: ./mvnw test
